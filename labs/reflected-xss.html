@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Reflected XSS</title></head>
+<body>
+  <h2>Reflected XSS Lab</h2>
+  <form method="GET">
+    <input type="text" name="q" placeholder="Search..." />
+    <button type="submit">Submit</button>
+  </form>
+  <p>Output: <span id="output"></span></p>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("output").innerHTML = params.get("q");
+  </script>
+</body>
+</html>
