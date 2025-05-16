@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><title>DOM XSS</title></head>
+<body>
+  <h2>DOM XSS Lab</h2>
+  <a href="?page=dashboard">Go to Dashboard</a>
+  <div id="content"></div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    document.getElementById("content").innerHTML = params.get("page");
+  </script>
+</body>
+</html>
