@@ -2,53 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BugBounty PoC Lab - Test Subdomain</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BugBounty PoC Lab - Test Environment</title>
   <link rel="icon" href="favicon.png" type="image/png" />
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
-
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #0f172a;
       color: #f1f5f9;
       padding: 40px;
       text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
-
     h1 {
-      color: #38bdf8;
+      color: #facc15;
       font-size: 2.5rem;
       margin-bottom: 20px;
     }
-
     p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       margin-bottom: 30px;
       color: #94a3b8;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
-
     footer {
-      margin-top: 60px;
+      margin-top: auto;
       font-size: 0.9rem;
       color: #64748b;
     }
   </style>
 </head>
 <body>
-  <h1>🔧 BugBounty PoC Lab - Test Subdomain</h1>
-  <p>This is a private subdomain for NetworkTerminator’s testing and experimentation.</p>
-  <p>Use it to try out security configurations, exploits, and other tests safely.</p>
+  <h1>⚠️ BugBounty PoC Lab - Testing Environment</h1>
+  <p>This subdomain is reserved for NetworkTerminator’s private bug bounty testing and proof-of-concept exploits.</p>
+  <p>Use responsibly. Minimal protection here to allow testing.</p>
+  <footer>© 2025 BugBounty PoC Lab | NetworkTerminator</footer>
 
-  <footer>
-    <p>© 2025 BugBounty PoC Lab | NetworkTerminator</p>
-  </footer>
-
-  <!-- Example simple XSS test -->
-  <script>alert('XSS Test on Test Subdomain');</script>
+  <!-- Example test payload -->
+  <script>alert('Test XSS on BugBounty PoC Subdomain');</script>
 </body>
 </html>
