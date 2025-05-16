@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>File Upload Lab - PoC</title>
+  <style>
+    body {
+      background-color: #0f172a;
+      color: #f8fafc;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px;
+    }
+
+    input[type="file"] {
+      margin: 20px 0;
+    }
+
+    .info {
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+
+    .output {
+      margin-top: 30px;
+      background-color: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧪 File Upload Lab</h1>
+  <p class="info">Only <code>.png</code>, <code>.jpg</code>, and <code>.jpeg</code> files are allowed.</p>
+  
+  <input type="file" id="fileInput" accept=".png,.jpg,.jpeg" />
+  <button onclick="uploadFile()">Upload</button>
+
+  <div class="output" id="output"></div>
+
+  <script>
+    function uploadFile() {
+      const fileInput = document.getElementById('fileInput');
+      const file = fileInput.files[0];
+      const output = document.getElementById('output');
+
+      if (!file) {
+        output.innerHTML = '⚠️ No file selected.';
+        return;
+      }
+
+      const allowedExtensions = ['image/png', 'image/jpeg'];
+
+      if (!allowedExtensions.includes(file.type)) {
+        output.innerHTML = `❌ Upload failed: File type "${file.type}" is not allowed.`;
+        return;
+      }
+
+      // Simulate upload
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        output.innerHTML = `
+          ✅ File uploaded successfully!<br><br>
+          <strong>Name:</strong> ${file.name}<br>
+          <strong>Type:</strong> ${file.type}<br>
+          <strong>Size:</strong> ${file.size} bytes<br>
+          <strong>Preview:</strong><br><br>
+          <img src="${e.target.result}" alt="Uploaded Image" style="max-width: 300px;" />
+        `;
+      };
+      reader.readAsDataURL(file);
+    }
+  </script>
+</body>
+</html>
