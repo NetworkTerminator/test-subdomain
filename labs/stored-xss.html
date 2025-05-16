@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head><title>Stored XSS</title></head>
+<body>
+  <h2>Stored XSS Lab</h2>
+  <form onsubmit="saveComment(); return false;">
+    <textarea id="comment" placeholder="Enter comment..."></textarea>
+    <br />
+    <button type="submit">Post</button>
+  </form>
+  <div id="comments"></div>
+
+  <script>
+    function saveComment() {
+      const comment = document.getElementById("comment").value;
+      localStorage.setItem("storedComment", comment);
+      showComment();
+    }
+
+    function showComment() {
+      const comment = localStorage.getItem("storedComment");
+      if (comment) {
+        document.getElementById("comments").innerHTML = `<p>${comment}</p>`;
+      }
+    }
+
+    showComment();
+  </script>
+</body>
+</html>
